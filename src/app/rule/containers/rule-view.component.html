@@ -1,0 +1,9 @@
+<ng-container *ngIf="data">
+    <h1>규칙 {{ data.name }} 자세히 보기</h1>
+    <h3 *ngIf="result">
+        {{ result.name }}
+    </h3>
+    <button class="btn btn-primary" (click)="lottery()">뽑기</button>
+    <app-item-datagrid [data]="data.items"></app-item-datagrid>
+    <app-item-form (output)="addItem($event)"></app-item-form>
+</ng-container>

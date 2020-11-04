@@ -1,0 +1,12 @@
+
+<form clrForm [formGroup]="formGroup">
+    <clr-input-container>
+      <label>이름</label>
+      <input clrInput type="text" formControlName="name"/>
+    </clr-input-container>
+    <clr-input-container>
+      <label>확률</label>
+      <input clrInput type="number" formControlName="prob"/>
+    </clr-input-container>
+  </form>
+<button class="btn btn-primary" (click)="save()">추가</button>

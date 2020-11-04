@@ -1,0 +1,9 @@
+<clr-datagrid>
+    <clr-dg-column>이름</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let log of data">
+        <clr-dg-cell style="cursor: pointer">
+        {{ log.name }}
+        </clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>

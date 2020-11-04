@@ -1,0 +1,26 @@
+<div class="main-container">
+  <header class="header-1">
+    <div class="branding">
+      <a routerLink="" class="nav-link">
+        <clr-icon shape="block"></clr-icon>
+        <span class="title">DICE</span>
+      </a>
+    </div>
+    <div class="header-nav">
+      <!-- <a class="nav-link" routerLink="lottery" routerLinkActive="active">
+        <span class="nav-text">뽑기</span>
+      </a> -->
+      <a class="nav-link" routerLink="rules" routerLinkActive="active">
+        <span class="nav-text">규칙들</span>
+      </a>
+      <a class="nav-link" routerLink="logs" routerLinkActive="active">
+        <span class="nav-text">내역 조회</span>
+      </a>
+    </div>
+  </header>
+  <div align="center">
+    <div style="width: 1280px" align="left">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
