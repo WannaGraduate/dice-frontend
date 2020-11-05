@@ -1,9 +1,13 @@
 <ng-container *ngIf="data">
-    <h1>규칙 {{ data.name }} 자세히 보기</h1>
-    <h3 *ngIf="result">
-        {{ result.name }}
-    </h3>
-    <button class="btn btn-primary" (click)="lottery()">뽑기</button>
+    <h1>{{ data.name }} 규칙 자세히 보기</h1>
+    <ng-container *ngIf="results">
+        <h3 *ngFor="let result of results">
+            {{ lasttime }} <b style="font-size: 36px;">{{ result.name }}</b> 선택되었습니다.
+        </h3>
+    </ng-container>
+    <button class="btn btn-primary" (click)="lottery(1)">무작위 추첨</button>
+    <button class="btn btn-primary" (click)="lottery(5)">무작위 추첨 5회</button>
+    <button class="btn btn-primary" (click)="lottery(10)">무작위 추첨 10회</button>
     <app-item-datagrid [data]="data.items"></app-item-datagrid>
     <app-item-form (output)="addItem($event)"></app-item-form>
 </ng-container>

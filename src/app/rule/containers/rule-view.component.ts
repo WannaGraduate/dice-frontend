@@ -14,12 +14,12 @@ export class RuleViewComponent implements OnInit, OnDestroy {
   unsubscribe$: Subject<void> = new Subject<void>();
   data: Rule;
   viewId: string;
-  result: Item;
+  results: Item[];
+  lasttime: string;
 
   constructor(
     public ruleService: RuleService,
     private route: ActivatedRoute,
-    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -35,8 +35,12 @@ export class RuleViewComponent implements OnInit, OnDestroy {
     this.data = await this.ruleService.getOne(this.viewId);
   }
 
-  async lottery(): Promise<void> {
-    this.result = await this.ruleService.lottery(this.viewId);
+  async lottery(count: number): Promise<void> {
+    this.lasttime = new Date().toUTCString();
+    this.results = [];
+    for (; count > 0; count--) {
+      this.results.push(await this.ruleService.lottery(this.viewId));
+    }
   }
 
   ngOnDestroy(): void {

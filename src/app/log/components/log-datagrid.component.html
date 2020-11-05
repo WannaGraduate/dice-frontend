@@ -1,9 +1,13 @@
 <clr-datagrid>
-    <clr-dg-column>이름</clr-dg-column>
+    <clr-dg-column>규칙 이름</clr-dg-column>
+    <clr-dg-column>추첨 내역</clr-dg-column>
 
     <clr-dg-row *clrDgItems="let log of data">
-        <clr-dg-cell style="cursor: pointer">
+        <clr-dg-cell>
         {{ log.name }}
+        </clr-dg-cell>
+        <clr-dg-cell>
+        {{ log.desc }}
         </clr-dg-cell>
     </clr-dg-row>
 </clr-datagrid>
