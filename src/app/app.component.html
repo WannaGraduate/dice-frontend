@@ -10,6 +10,9 @@
       <!-- <a class="nav-link" routerLink="lottery" routerLinkActive="active">
         <span class="nav-text">뽑기</span>
       </a> -->
+      <a class="nav-link" routerLink="users" routerLinkActive="active">
+        <span class="nav-text">사용자 목록</span>
+      </a>
       <a class="nav-link" routerLink="rules" routerLinkActive="active">
         <span class="nav-text">규칙들</span>
       </a>
@@ -18,9 +21,13 @@
       </a>
     </div>
     <div class="header-actions">
-      <a href="javascript://" class="nav-link nav-icon-text">
-          <clr-icon shape="user"></clr-icon>
-          <span class="nav-text">테스트사용자</span>
+      <a class="nav-link nav-icon-text" *ngIf="user">
+        <clr-icon shape="user"></clr-icon>
+        <span class="nav-text">{{ user.name }} {{ user.key }}</span>
+      </a>
+      <a class="nav-link nav-icon-text" *ngIf="!user">
+        <clr-icon shape="user"></clr-icon>
+        <span class="nav-text">선택된 사용자가 없습니다</span>
       </a>
     </div>
   </header>

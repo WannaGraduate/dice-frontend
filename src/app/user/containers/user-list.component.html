@@ -1,0 +1,3 @@
+<h1>사용자 목록</h1>
+<button class="btn btn-primary btn-block" routerLink="./add">새로운 사용자 추가</button>
+<app-user-datagrid [data]="userList" (delete)="onDelete($event)" (selectUser)="onSelect($event)"></app-user-datagrid>

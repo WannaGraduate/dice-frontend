@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LogModule } from './log/log.module';
 import { LotteryModule } from './lottery/lottery.module';
 import { RuleModule } from './rule/rule.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { RuleModule } from './rule/rule.module';
     LogModule,
     LotteryModule,
     RuleModule,
+    UserModule,
     AppRoutingModule,
     ClarityModule,
     BrowserAnimationsModule

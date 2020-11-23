@@ -1,0 +1,12 @@
+
+<form clrForm [formGroup]="formGroup">
+    <clr-input-container>
+      <label>이름</label>
+      <input clrInput class="shortfield" type="text" formControlName="name"/>
+    </clr-input-container>
+    <clr-input-container>
+      <label>공개 키</label>
+      <input clrInput class="shortfield" type="text" formControlName="key"/>
+    </clr-input-container>
+  </form>
+<button class="btn btn-primary" (click)="save()" [disabled]="formGroup.invalid">저장</button>

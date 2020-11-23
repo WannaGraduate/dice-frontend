@@ -6,6 +6,8 @@ import { RuleAddComponent } from './rule/containers/rule-add.component';
 import { RuleEditComponent } from './rule/containers/rule-edit.component';
 import { RuleListComponent } from './rule/containers/rule-list.component';
 import { RuleViewComponent } from './rule/containers/rule-view.component';
+import { UserAddComponent } from './user/containers/user-add.component';
+import { UserListComponent } from './user/containers/user-list.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
   {
     path: 'rules',
     component: RuleListComponent,
+  },
+  {
+    path: 'users',
+    component: UserListComponent,
+  },
+  {
+    path: 'users/add',
+    component: UserAddComponent,
   },
   { path: '', redirectTo: 'rules', pathMatch: 'full' },
   { path: '**', redirectTo: 'rules' },
