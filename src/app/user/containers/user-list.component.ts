@@ -15,11 +15,7 @@ export class UserListComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.userList = [{
-      id: 'sadasd',
-      name: 'sdasd',
-      key: 'asdasdsadasd',
-    }];
+    this.userList = await this.userService.getAll();
   }
 
   onSelect(id: string): void {

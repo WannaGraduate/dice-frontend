@@ -1,12 +1,25 @@
 
 <form clrForm [formGroup]="formGroup">
     <clr-input-container>
-      <label>이름</label>
+      <label>공개 키 & 비밀 키</label>
+    </clr-input-container>
+    <button class="btn btn-primary" (click)="createKey()">새로운 키 생성하기</button>
+    <div *ngIf="pkey.length && skey.length">
+      <div>
+        <h1>공개 키</h1>
+        {{ pkey }}
+      </div>
+      <div>
+        <h1>비밀 키</h1>
+        {{ skey }}
+      </div>
+      <div>
+        <h3 style="color: red">비밀 키는 저장되지 않습니다! 잃어버리지 않도록 보관해주세요!</h3>
+      </div>
+    </div>
+    <clr-input-container>
+      <label>사용자 이름</label>
       <input clrInput class="shortfield" type="text" formControlName="name"/>
     </clr-input-container>
-    <clr-input-container>
-      <label>공개 키</label>
-      <input clrInput class="shortfield" type="text" formControlName="key"/>
-    </clr-input-container>
+    <button class="btn btn-primary" (click)="save()" [disabled]="formGroup.invalid || !formGroup.controls['name'].value" style="margin-top: 30px">저장</button>
   </form>
-<button class="btn btn-primary" (click)="save()" [disabled]="formGroup.invalid">저장</button>

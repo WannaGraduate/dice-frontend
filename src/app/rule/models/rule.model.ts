@@ -17,3 +17,8 @@ export interface ItemForm {
     name: string;
     prob: number;
 }
+
+export interface ProofForm {
+    random: string;
+    proof: number;
+}

@@ -19,6 +19,7 @@ export class RuleViewComponent implements OnInit, OnDestroy {
   lasttime: string;
 
   formGroup: FormGroup;
+  formGroup2: FormGroup;
 
   constructor(
     public ruleService: RuleService,
@@ -28,6 +29,10 @@ export class RuleViewComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       key: new FormControl('', Validators.required),
+    });
+    this.formGroup2 = new FormGroup({
+      random: new FormControl('', Validators.required),
+      proof: new FormControl('', Validators.required),
     });
     this.route.params.pipe(takeUntil(this.unsubscribe$))
     .subscribe(async (params) => {

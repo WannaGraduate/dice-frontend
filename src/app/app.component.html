@@ -23,7 +23,9 @@
     <div class="header-actions">
       <a class="nav-link nav-icon-text" *ngIf="user">
         <clr-icon shape="user"></clr-icon>
-        <span class="nav-text">{{ user.name }} {{ user.key }}</span>
+        <span class="nav-text">{{ user.name }}</span>
+        <clr-icon shape="key"></clr-icon>
+        <span class="nav-text">{{ user.publicKey }}</span>
       </a>
       <a class="nav-link nav-icon-text" *ngIf="!user">
         <clr-icon shape="user"></clr-icon>

@@ -1,14 +1,19 @@
-<div class="card clickable" *ngFor="let rule of data" (click)="view(rule.id)">
-    <div class="card-header">
-        {{ rule.name }}
-    </div>
-    <div class="card-block">
-        <div class="card-text">
-            <b>id:</b> {{ rule.id }}
+<div class="clr-row">
+    <div class="clr-col-lg-6 clr-col-12" *ngFor="let rule of data">
+        <div class="card clickable">
+            <div class="card-header">
+                {{ rule.name }}
+            </div>
+            <div class="card-block">
+                <div class="card-text">
+                    <b>id:</b> {{ rule.id }}
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" (click)="view(rule.id)">자세히 보기</button>
+                <button class="btn btn-success-outline" (click)="onEdit(rule.id)">수정</button>
+                <button class="btn btn-danger-outline" (click)="onDelete(rule.id)">삭제</button>
+            </div>
         </div>
-    </div>
-    <div class="card-footer">
-        <button class="btn btn-outline" (click)="onEdit(rule.id)">수정</button>
-        <button class="btn btn-outline" (click)="onDelete(rule.id)">삭제</button>
     </div>
 </div>

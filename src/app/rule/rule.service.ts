@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Item, ItemForm, RuleForm } from './models/rule.model';
+import { Item, ItemForm, ProofForm, RuleForm } from './models/rule.model';
 
 @Injectable()
 export class RuleService {
@@ -51,6 +51,13 @@ export class RuleService {
     return this.http.post<Item>(
         `${environment.apiAddress}/rules/${id}/lottery`,
         {},
+    ).toPromise();
+  }
+
+  async proof(id: string, data: ProofForm): Promise<Item> {
+    return this.http.post<Item>(
+        `${environment.apiAddress}/rules/${id}/lottery`,
+        data,
     ).toPromise();
   }
 
