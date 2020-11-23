@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { RuleService } from '../rule.service';
@@ -17,12 +18,17 @@ export class RuleViewComponent implements OnInit, OnDestroy {
   results: Item[];
   lasttime: string;
 
+  formGroup: FormGroup;
+
   constructor(
     public ruleService: RuleService,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    this.formGroup = new FormGroup({
+      key: new FormControl('', Validators.required),
+    });
     this.route.params.pipe(takeUntil(this.unsubscribe$))
     .subscribe(async (params) => {
       this.data = await this.ruleService.getOne(params['id']);

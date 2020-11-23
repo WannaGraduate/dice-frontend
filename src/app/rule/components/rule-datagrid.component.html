@@ -1,17 +1,14 @@
-<clr-datagrid>
-    <clr-dg-column>ID</clr-dg-column>
-    <clr-dg-column>이름</clr-dg-column>
-
-    <clr-dg-row *clrDgItems="let rule of data">
-        <clr-dg-action-overflow>
-            <button class="action-item" (click)="onEdit(rule.id)">Edit</button>
-            <button class="action-item" (click)="onDelete(rule.id)">Delete</button>
-        </clr-dg-action-overflow>
-        <clr-dg-cell style="cursor: pointer" (click)="view(rule.id)">
-            {{ rule.id }}
-        </clr-dg-cell>
-        <clr-dg-cell style="cursor: pointer" (click)="view(rule.id)">
-            {{ rule.name }}
-        </clr-dg-cell>
-    </clr-dg-row>
-</clr-datagrid>
+<div class="card clickable" *ngFor="let rule of data" (click)="view(rule.id)">
+    <div class="card-header">
+        {{ rule.name }}
+    </div>
+    <div class="card-block">
+        <div class="card-text">
+            <b>id:</b> {{ rule.id }}
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-outline" (click)="onEdit(rule.id)">수정</button>
+        <button class="btn btn-outline" (click)="onDelete(rule.id)">삭제</button>
+    </div>
+</div>

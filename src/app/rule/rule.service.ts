@@ -6,24 +6,6 @@ import { Item, ItemForm, RuleForm } from './models/rule.model';
 
 @Injectable()
 export class RuleService {
-  rules = [
-      {
-          id: '1',
-          name: '테스트',
-      },
-      {
-          id: '2',
-          name: '테스트4444',
-      },
-      {
-          id: '3',
-          name: '테스트3333',
-      },
-      {
-          id: '4',
-          name: '테스트2222',
-      },
-  ];
 
   constructor(private http: HttpClient) { }
 
@@ -73,11 +55,6 @@ export class RuleService {
   }
 
   edit(id: string, data: RuleForm): void {
-      const target = this.rules.find(x => x.id === id);
-      this.rules[this.rules.indexOf(target)] = {
-          ...data,
-          id,
-      }
   }
 
   async delete(id: string): Promise<any> {

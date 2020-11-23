@@ -2,7 +2,7 @@
 <form clrForm [formGroup]="formGroup">
     <clr-input-container>
       <label>이름</label>
-      <input clrInput type="text" formControlName="name"/>
+      <input clrInput class="shortfield" type="text" formControlName="name"/>
     </clr-input-container>
   </form>
-<button class="btn btn-primary" (click)="save()">저장</button>
+<button class="btn btn-primary" (click)="save()" [disabled]="formGroup.invalid">저장</button>

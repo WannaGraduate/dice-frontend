@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Item, ItemForm } from '../models/rule.model';
 
 @Component({
@@ -24,8 +24,8 @@ export class ItemFormComponent implements OnInit {
   ngOnInit(): void {
     if (!this.editId) {
       this.formGroup = new FormGroup({
-        name: new FormControl(['']),
-        prob: new FormControl(['']),
+        name: new FormControl('', Validators.required),
+        prob: new FormControl('', Validators.required),
       });
     }
   }
