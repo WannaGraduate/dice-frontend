@@ -16,18 +16,18 @@
       <a class="nav-link" routerLink="rules" routerLinkActive="active">
         <span class="nav-text">규칙들</span>
       </a>
-      <a class="nav-link" routerLink="logs" routerLinkActive="active">
+      <!-- <a class="nav-link" routerLink="logs" routerLinkActive="active">
         <span class="nav-text">내역 조회</span>
-      </a>
+      </a> -->
     </div>
     <div class="header-actions">
-      <a class="nav-link nav-icon-text" *ngIf="user">
+      <a class="nav-link nav-icon-text" *ngIf="userService.selected">
         <clr-icon shape="user"></clr-icon>
-        <span class="nav-text">{{ user.name }}</span>
+        <span class="nav-text">{{ userService.selected.name }}</span>
         <clr-icon shape="key"></clr-icon>
-        <span class="nav-text">{{ user.publicKey }}</span>
+        <span class="nav-text">{{ userService.selected.publicKey }}</span>
       </a>
-      <a class="nav-link nav-icon-text" *ngIf="!user">
+      <a class="nav-link nav-icon-text" *ngIf="!userService.selected">
         <clr-icon shape="user"></clr-icon>
         <span class="nav-text">선택된 사용자가 없습니다</span>
       </a>

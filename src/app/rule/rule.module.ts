@@ -5,7 +5,7 @@ import { ClarityModule } from '@clr/angular';
 import { RuleService } from './rule.service';
 import { RuleAddComponent } from './containers/rule-add.component';
 import { RuleFormComponent } from './components/rule-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RuleEditComponent } from './containers/rule-edit.component';
 import { RuleListComponent } from './containers/rule-list.component';
 import { RouterModule } from '@angular/router';
@@ -29,6 +29,7 @@ import { ItemFormComponent } from './components/item-form.component';
   imports: [
     CommonModule,
     ClarityModule,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule,
   ],

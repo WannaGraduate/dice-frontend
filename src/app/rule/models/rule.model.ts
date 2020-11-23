@@ -1,6 +1,7 @@
 export interface Rule {
     id: string;
     name: string;
+    items: Item[];
 }
 
 export interface RuleForm {
@@ -19,6 +20,6 @@ export interface ItemForm {
 }
 
 export interface ProofForm {
-    random: string;
-    proof: number;
+    proof: string;
+    token: string;
 }

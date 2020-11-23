@@ -1,31 +1,40 @@
 <ng-container *ngIf="data">
     <h1>{{ data.name }} 규칙 자세히 보기</h1>
-    <ng-container *ngIf="results">
-        <h3 *ngFor="let result of results">
-            {{ lasttime }} <b style="font-size: 36px;">{{ result.name }}</b> 선택되었습니다.
-        </h3>
-    </ng-container>
-    <form clrForm [formGroup]="formGroup" style="margin-bottom: 15px">
+    <button class="btn btn-primary" (click)="getAlpha()" [disabled]="!data.items.length">Alpha 요청</button>
+    <form clrForm style="margin-bottom: 15px">
+        <clr-input-container>
+            <label>Alpha</label>
+            <input clrInput name="alpha" class="longfield" type="text" [(ngModel)]="alpha" disabled/>
+        </clr-input-container>
         <clr-input-container>
         <label>Secret Key 입력</label>
-        <input clrInput class="longfield" type="text" formControlName="key"/>
+        <input clrInput name="key" class="longfield" type="text" [(ngModel)]="secretKey"/>
         </clr-input-container>
     </form>
-    <button class="btn btn-primary" (click)="lottery(1)" [disabled]="!data.items.length || formGroup.invalid">무작위 추첨</button>
-    <!-- <button class="btn btn-primary" (click)="lottery(5)" [disabled]="!data.items.length || formGroup.invalid">무작위 추첨 5회</button>
-    <button class="btn btn-primary" (click)="lottery(10)" [disabled]="!data.items.length || formGroup.invalid">무작위 추첨 10회</button> -->
-    <form clrForm [formGroup]="formGroup2" style="margin-bottom: 15px">
-        <h3>입력받은 Secret Key와 서버로부터 받은 Alpha 값으로 생성된 결과입니다.</h3>
+    <button class="btn btn-primary" (click)="generateProofHash()" [disabled]="!data.items.length || !alpha || !secretKey">계산</button>
+    <form clrForm style="margin-bottom: 15px">
+        <h3>입력받은 Secret Key와 서버로부터 받은 Alpha 값으로 브라우저에서 계산된 결과입니다.</h3>
         <clr-input-container>
-        <label>Random</label>
-        <input clrInput class="longfield" type="text" formControlName="random"/>
+            <label>Proof</label>
+            <input clrInput name="proof" class="longfield" type="text" [(ngModel)]="proof"/>
         </clr-input-container>
         <clr-input-container>
-        <label>Proof</label>
-        <input clrInput class="longfield" type="text" formControlName="proof"/>
+            <label>Random (hex)</label>
+            <input clrInput name="hash" class="longfield" type="text" [(ngModel)]="hash" disabled/>
+        </clr-input-container>
+        <clr-input-container>
+            <label>Random (modular)</label>
+            <input clrInput name="hashNumMod" class="longfield" type="text" [(ngModel)]="hashNumMod" disabled/>
         </clr-input-container>
     </form>
-    <button class="btn btn-primary" (click)="lottery(1)" [disabled]="!data.items.length || formGroup2.invalid">결과 전송 및 검증</button>
+    <ng-container *ngIf="result">
+        <h3>
+            <b style="font-size: 36px;">{{ result.name }}</b>
+        </h3>
+    </ng-container>
+    <h3 *ngIf="error" style="color: red;">전송한 값이 올바르지 않습니다.</h3>
+    <h3 *ngIf="success" style="color: green;">전송한 값이 올바른 값입니다.</h3>
+    <button class="btn btn-primary" (click)="sendProof()" [disabled]="!data.items.length || !proof">결과 전송 및 검증</button>
     <app-item-datagrid [data]="data.items" (delete)="onDelete($event)"></app-item-datagrid>
     <app-item-form (output)="addItem($event)"></app-item-form>
 </ng-container>

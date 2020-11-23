@@ -9,15 +9,13 @@ import { UserService } from './user/user.service';
 })
 export class AppComponent implements OnInit {
   title = 'dice-frontend';
-  user: User;
 
   constructor(
     public userService: UserService,
   ) { }
 
-  ngOnInit(): void {
-    this.userService.selected.subscribe(user => {
-      this.user = user;
-    });
+  async ngOnInit() {
+    await this.userService.getAll();
+    this.userService.selected = this.userService.users[0];
   }
 }

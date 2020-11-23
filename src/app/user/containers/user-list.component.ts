@@ -5,27 +5,25 @@ import { User } from '../models/user.model';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
   userList: User[];
 
-  constructor(
-    public userService: UserService,
-  ) { }
+  constructor(public userService: UserService) {}
 
   async ngOnInit(): Promise<void> {
-    this.userList = await this.userService.getAll();
+    await this.userService.getAll();
+    this.userList = this.userService.users;
   }
 
   onSelect(id: string): void {
-    this.userService.selected.next(this.userList.find(x => x.id === id));
+    this.userService.selected = this.userList.find((x) => x.id === id);
   }
-
 
   async onDelete(id: string): Promise<void> {
     await this.userService.delete(id);
-    this.userList = await this.userService.getAll();
+    await this.userService.getAll();
+    this.userList = this.userService.users;
   }
-
 }
