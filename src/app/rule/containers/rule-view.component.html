@@ -16,7 +16,7 @@
         <h3>입력받은 Secret Key와 서버로부터 받은 Alpha 값으로 브라우저에서 계산된 결과입니다.</h3>
         <clr-input-container>
             <label>Proof</label>
-            <input clrInput name="proof" class="longfield" type="text" [(ngModel)]="proof"/>
+            <input clrInput name="proof" class="longfield" type="text" [(ngModel)]="proof" (ngModelChange)="updateResult()"/>
         </clr-input-container>
         <clr-input-container>
             <label>Random (hex)</label>

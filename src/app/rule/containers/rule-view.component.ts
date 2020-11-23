@@ -62,6 +62,10 @@ export class RuleViewComponent implements OnInit, OnDestroy {
 
   generateProofHash(): void {
     this.proof = vrf.prove(this.secretKey, this.alpha);
+    this.updateResult();
+  }
+
+  updateResult(): void {
     this.hash = vrf.proof_to_hash(this.proof);
     this.hashNumMod = new BN(this.hash, 'hex').modn(this.data.items.reduce((sum, x) => sum + x.prob, 0));
     let w = 0;
