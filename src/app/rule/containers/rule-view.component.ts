@@ -47,4 +47,9 @@ export class RuleViewComponent implements OnInit, OnDestroy {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
+
+  async onDelete(id: string): Promise<void> {
+    await this.ruleService.deleteItem(this.viewId, id);
+    this.data = await this.ruleService.getOne(this.viewId);
+  }
 }

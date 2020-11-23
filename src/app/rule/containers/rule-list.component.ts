@@ -19,7 +19,7 @@ export class RuleListComponent implements OnInit {
   }
 
   async onDelete(id: string): Promise<void> {
-    this.ruleService.delete(id);
+    await this.ruleService.delete(id);
     this.ruleList = await this.ruleService.getAll();
   }
 

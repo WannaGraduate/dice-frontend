@@ -33,8 +33,8 @@ export class RuleService {
         `${environment.apiAddress}/rules`,
       )
       .pipe(
-          map(data => {
-              return data;
+          map(res => {
+              return res;
           }),
       ).toPromise();
   }
@@ -45,8 +45,8 @@ export class RuleService {
         `${environment.apiAddress}/rules/${id}`,
       )
       .pipe(
-          map(data => {
-              return data;
+          map(res => {
+              return res;
           }),
       ).toPromise();
   }
@@ -80,7 +80,15 @@ export class RuleService {
       }
   }
 
-  delete(id: string): void {
-    this.rules = [...this.rules.filter(x => x.id !== id)];
+  async delete(id: string): Promise<any> {
+    return this.http.delete<{ }>(
+        `${environment.apiAddress}/rules/${id}`,
+    ).toPromise();
+  }
+
+  async deleteItem(ruleId: string, itemId: string): Promise<any> {
+    return this.http.delete<{ }>(
+        `${environment.apiAddress}/rules/${ruleId}/items/${itemId}`,
+    ).toPromise();
   }
 }

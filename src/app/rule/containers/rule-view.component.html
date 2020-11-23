@@ -8,6 +8,6 @@
     <button class="btn btn-primary" (click)="lottery(1)">무작위 추첨</button>
     <button class="btn btn-primary" (click)="lottery(5)">무작위 추첨 5회</button>
     <button class="btn btn-primary" (click)="lottery(10)">무작위 추첨 10회</button>
-    <app-item-datagrid [data]="data.items"></app-item-datagrid>
+    <app-item-datagrid [data]="data.items" (delete)="onDelete($event)"></app-item-datagrid>
     <app-item-form (output)="addItem($event)"></app-item-form>
 </ng-container>

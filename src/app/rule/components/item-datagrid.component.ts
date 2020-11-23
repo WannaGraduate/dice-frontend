@@ -18,4 +18,8 @@ export class ItemDatagridComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onDelete(id: string): void {
+    this.delete.emit(id);
+  }
+
 }
